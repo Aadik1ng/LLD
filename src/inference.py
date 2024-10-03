@@ -27,27 +27,27 @@ def make_prediction(model, img_array):
     return class_mapping[pred_class]
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser(description="Lung Cancer Detection Inference Script")
-    # parser.add_argument('--image-path', type=str, required=True, help='Path to the input image')
-    # parser.add_argument('--model-path', type=str, required=True, help='Path to the trained model')
+    parser = argparse.ArgumentParser(description="Lung Cancer Detection Inference Script")
+    parser.add_argument('--image-path', type=str, required=True, help='Path to the input image')
+    parser.add_argument('--model-path', type=str, required=True, help='Path to the trained model')
 
-    # args = parser.parse_args()
+    args = parser.parse_args()
 
     # Start MLflow run
     mlflow.start_run()
-    image_path=r'D:\LLD\data\raw\Normal cases\Normal case (1).jpg'
-    model_path=r'D:\LLD\models\lung_cancer_model.h5'
+    # image_path='D:\LLD\data\raw\Malignant cases\Malignant case (1).jpg'
+    # model_path='D:\LLD\models\lung_cancer_detection_model.h5'
     # Load and preprocess the image
-    img_array = load_and_preprocess_image(image_path)
+    img_array = load_and_preprocess_image(args.image_path)
 
     # Load the trained model
-    model = load_model(model_path)
+    model = load_model(args.model_path)
 
     # Make a prediction
     pred_label = make_prediction(model, img_array)
     
     # Log the input image and prediction
-    mlflow.log_param("Input Image", image_path)
+    mlflow.log_param("Input Image", args.image_path)
     mlflow.log_param("Predicted Label", pred_label)
 
     print(f"Predicted Label: {pred_label}")
