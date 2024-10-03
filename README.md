@@ -17,14 +17,16 @@ This project aims to detect lung cancer from CT scan images using a Convolutiona
     git clone https://github.com/Aadik1ng/LLD
     cd LLD
     ```
+    For the dataset 
+                    https://github.com/hamdalla93/The-IQ-OTHNCCD-lung-cancer-dataset.git 
 
-2. **Create a virtual environment and activate it**:
+3. **Create a virtual environment and activate it**:
     ```sh
     python -m venv [Environment_name]
     source venv/bin/activate  # On Windows: venv\Scripts\activate
     ```
 
-3. **Install the required packages**:
+4. **Install the required packages**:
     ```sh
     pip install -r requirements.txt
     ```
